@@ -1,0 +1,38 @@
+<% layout('layouts/boilerplate') -%>
+<title><%= campgroundInfo.title %> - Edit</title>
+    <div class="col-6 offset-3">
+        <h1 class="text-center mt-3">Edit Campground Information</h1>
+        <form action="/campgrounds/<%= campgroundInfo._id %>?_method=PUT" class="needs-validation" method="POST" novalidate>
+            <div class="mb-3">
+                <label for="title" class="form-label">Title   </label>
+                <input type="text" class="form-control" placeholder="Title" id="title" name="campground[title]" value="<%= campgroundInfo.title %>"  required>
+            </div>
+    
+            <div class="mb-3">
+                <label for="imageUrl" class="form-label">Image URL  </label>
+                <input type="text" class="form-control" placeholder="Title" id="imageUrl" name="campground[image]" value="<%= campgroundInfo.image %>" required>
+            </div>
+    
+                <div class="mb-3">
+                <label for="price" class="form-label">Price</label>
+                  <div class="input-group mb-3">
+                    <span class="input-group-text">$</span>
+                    <input type="text" class="form-control" id="price" placeholder="0.00" name="campground[price]" value="<%= campgroundInfo.price %>" required>
+                  </div>
+                </div>
+    
+                <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea class="form-control" id="description" rows="3" placeholder="Write a description.." name="campground[description]" required><%= campgroundInfo.title %></textarea>
+                </div>
+    
+                <div class="mb-3">
+                <label for="location" class="form-label">Location: </label>
+                <input type="text" class="form-control" placeholder="Location" id="location" name="campground[location]" value="<%= campgroundInfo.location %> " required>
+                <button type="submit" class="btn btn-info mt-3" style="color: white;">Update</button>
+                </div>
+        </form>
+    </div>
+    <a href="/campgrounds/<%= campgroundInfo._id %>">Back</a>
+
+    
