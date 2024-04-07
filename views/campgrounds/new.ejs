@@ -2,7 +2,7 @@
 <title>Add a new Campground</title>
     <div class="col-6 offset-3">
       <h1 class="text-center mt-3">Add a Campground</h1>
-      <form action="/campgrounds" method="POST" class="needs-validation" novalidate>
+      <form action="/campgrounds" method="POST" class="needs-validation" novalidate enctype="multipart/form-data">
         <div class="mb-3">
         <label for="title" class="form-label">Title   </label>
         <input type="text" class="form-control" placeholder="Title" id="title" name="campground[title]" required>

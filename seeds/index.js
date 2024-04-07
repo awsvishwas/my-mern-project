@@ -18,6 +18,7 @@ const seedDatabase = async () =>{
         const randomPrice = Math.floor(Math.random()*50)
         const randomImageIndex = Math.floor(Math.random()*15)
         const camp = new Campground({
+            author: '660f9d0e54d925735c95e59f',
             location: `${cities[randomValue].city}, ${cities[randomValue].state}`,
             title: `${sample(descriptors)} ${sample(places)}`,
             description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae incidunt ipsa, aperiam quis ipsum cupiditate? Error, porro animi quo voluptate ipsam veritatis itaque blanditiis odit consectetur. Sint itaque sequi delectus.',
