@@ -7,12 +7,6 @@
         <label for="title" class="form-label">Title   </label>
         <input type="text" class="form-control" placeholder="Title" id="title" name="campground[title]" required>
         </div>
-  
-        <div class="mb-3">
-        <label for="imageUrl" class="form-label">Image URL  </label>
-        <input type="text" class="form-control" placeholder="Title" id="imageUrl" name="campground[image]" required>
-        </div>
-  
         <div class="mb-3">
         <label for="price" class="form-label">Price</label>
           <div class="input-group mb-3">
@@ -20,17 +14,21 @@
             <input type="text" class="form-control" id="price" placeholder="0.00" name="campground[price]" required>
           </div>
         </div>
-        
         <div class="mb-3">
         <label for="description" class="form-label">Description</label>
         <textarea class="form-control" id="description" rows="3" placeholder="Write a description.." name="campground[description]" required></textarea>
         </div>
-  
         <div class="mb-3">
         <label for="location" class="form-label">Location: </label>
         <input type="text" class="form-control" placeholder="Location" id="location" name="campground[location]" required>
-        <button type="submit" class="btn btn-success mt-3">Submit</button>
+        </div>
+        <div class="mb-3 custom-file">
+          <label for="images" class="form-label">Add Images:</label>
+          <input type="file" class="form-control custom-file-label" id="images" name="image" multiple> 
         </div> 
+        <div class="mb-3">
+          <button type="submit" class="btn btn-success mt-3">Submit</button>
+        </div>
       </form>
   
     </div>

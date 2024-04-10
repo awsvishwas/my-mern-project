@@ -4,8 +4,25 @@
 <body>
 <div class="row">
   <div class="col-6 mt-4">
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <% campground.images.forEach((img, i)=>{  %>
+          <div class="carousel-item <%= i===0? 'active':'' %>">
+            <img src="<%= img.url %>" class="d-block w-100" alt="..." crossorigin="anonymous">
+          </div>
+          <% }) %> 
+        
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
       <div class="card mb-3">
-          <img src="<%= campground.image %>" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title"><%= campground.title %></h5>
             <p class="card-text"><%= campground.description %></p>
@@ -25,10 +42,10 @@
         <% } %>        
       </div>
   </div>
-
   <div class="col-6 mt-4">
+    <div class="shadow p-3 mb-5 bg-body rounded" id="map"></div>
     <% if(currentUser){ %>
-    <h4>Leave a Review</h4>
+  <div class="shadow p-3 mb-5 bg-body rounded"><h4 class="mt-4">Leave a Review</h4>
     <form class="needs-validation" action="/campgrounds/<%= campground._id %>/reviews" method="POST" novalidate>
       <div class="mb-3">
         <!-- <div class="mb-3">
@@ -56,7 +73,9 @@
         </div>
       </div>
     </form>
-    <% } %>
+    </div>
+      <% } %>
+      <div class="shadow p-3 mb-5 bg-body rounded">
     <h4>All reviews</h4>
     <% for(let review of campground.reviews){ %>
       <div class="card mb-3">
@@ -77,8 +96,14 @@
         </div>
       </div>
       <% } %>
+    </div>
 
   </div>
 </div>
 
     <a href="/campgrounds">Back</a>
+<script>
+  const mbxtoken = '<%- process.env.MAPBOX_TOKEN %>';
+  const campground =  <%- JSON.stringify(campground) %>
+</script>   
+<script src="/js/showMap.js"></script>
