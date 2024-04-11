@@ -15,6 +15,8 @@ const passport = require('passport')
 const LocalStrategy = require('passport-local')
 const mongoSanitize = require('express-mongo-sanitize')
 const helmet = require('helmet')
+const MongoStore = require('connect-mongo')
+const mongoUrl = process.env.MONGO_URL
 app.engine('ejs', ejsMate)
 
 app.listen(3000, ()=>{
@@ -24,8 +26,15 @@ app.listen(3000, ()=>{
 const userRoutes = require('./routes/userRoutes')
 const campgroundRoutes = require('./routes/campgroundRoutes')
 const reviewRoutes = require('./routes/reviewRoutes')
-
+const store = MongoStore.create({
+    mongoUrl: mongoUrl,
+    touchAfter: 24 * 60 * 60,
+    crypto: {
+        secret: 'secretsecret'
+    }
+});
 const sessionConfig = {
+    store,
     name: 'session',
     secret: 'secretsecret',
     resave: false,
@@ -38,9 +47,13 @@ const sessionConfig = {
     }
 }
 
+
+
+//'mongodb://127.0.0.1:27017/yelpcamp'
+
 const mongoose = require('mongoose');
 const { Session } = require('inspector');
-mongoose.connect('mongodb://127.0.0.1:27017/yelpcamp');
+mongoose.connect(mongoUrl);
 
 app.set('view engine','ejs')
 app.set('views',path.join(__dirname,'views'))
